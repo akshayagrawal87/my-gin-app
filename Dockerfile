@@ -7,13 +7,13 @@ WORKDIR /app
 # Copy the Go source code into the container
 COPY . .
 
-RUN go mod init
-
-# Run go mod tidy to clean up the dependencies
-RUN go mod tidy
+RUN go mod init microservice
 
 # Download the dependencies
 RUN go mod download
+
+# Run go mod tidy to clean up the dependencies
+RUN go mod tidy
 
 # Build the application
 RUN go build -o main main.go
