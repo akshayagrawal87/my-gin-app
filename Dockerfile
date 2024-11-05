@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM golang:alpine3.14 AS build
+FROM golang:1.22.5-alpine AS build
 
 # Set the working directory to /app
 WORKDIR /app
@@ -10,11 +10,11 @@ COPY . .
 # Download the dependencies
 RUN go mod download
 
-# Build the application with optimized flags
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o main main.go
+# Build the application
+RUN go build -o main main.go
 
 # Stage 2: Create a production-ready image
-FROM alpine:3.14
+FROM alpine:latest
 
 # Set the working directory to /app
 WORKDIR /app
