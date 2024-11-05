@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the Go source code into the container
 COPY . .
 
+# Run go mod tidy to clean up the dependencies
+RUN go mod tidy
+
 # Download the dependencies
 RUN go mod download
 
