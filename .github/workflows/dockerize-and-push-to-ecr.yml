@@ -21,14 +21,14 @@ jobs:
 
       - name: Login to ECR
         run: |
-          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCESS_KEY_ID }}.dkr.ecr.us-east-1.amazonaws.com
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 207567764447.dkr.ecr.us-east-1.amazonaws.com
 
       - name: Build and push to ECR
         run: |
           docker build -t demo/my-gin-app .
           docker tag demo/my-gin-app:latest ${{ secrets.AWS_ACCESS_KEY_ID }}.dkr.ecr.us-east-1.amazonaws.com/demo/my-gin-app:latest
           docker push  ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/demo/my-gin-app:latest
-          
+
       - name: Verify ECR image
         run: |
           aws ecr describe-images --repository-name my-gin-app --image-ids imageTag=latest
