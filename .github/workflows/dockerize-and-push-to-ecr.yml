@@ -27,8 +27,8 @@ jobs:
       - name: Build and push to ECR
         run: |
           docker build -t my-gin-app .
-          docker tag my-gin-app:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/my-gin-app
-          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/my-gin-app
+          docker tag my-gin-app:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/demo/my-gin-app
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/demo/my-gin-app
 
       - name: Verify ECR image
         run: |
