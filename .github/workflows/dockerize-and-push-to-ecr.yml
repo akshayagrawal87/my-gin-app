@@ -31,4 +31,4 @@ jobs:
 
       - name: Verify ECR image
         run: |
-          aws ecr describe-images --repository-name my-gin-app --image-ids imageTag=latest
+          aws ecr describe-images --repository-name demo/my-gin-app --image-ids imageTag=latest
